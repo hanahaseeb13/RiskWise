@@ -16,19 +16,19 @@ export default function Workspace() {
   return (
     <div className="flex flex-col gap-6">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-        <Card hover={false}>
+        <Card>
           <p className="text-xs uppercase tracking-wide text-muted">Cash Balance</p>
           <p className="mt-2 font-display text-3xl font-bold">
             ₹<AnimatedCounter value={cash} />
           </p>
         </Card>
-        <Card hover={false}>
+        <Card>
           <p className="text-xs uppercase tracking-wide text-muted">Portfolio Value</p>
           <p className="mt-2 font-display text-3xl font-bold text-teal">
             ₹<AnimatedCounter value={current} />
           </p>
         </Card>
-        <Card hover={false}>
+        <Card>
           <p className="text-xs uppercase tracking-wide text-muted">Unrealized P&amp;L</p>
           <p className={clsx('mt-2 font-display text-3xl font-bold', pnl >= 0 ? 'text-accent' : 'text-danger')}>
             {pnl >= 0 ? '+' : '-'}₹<AnimatedCounter value={Math.abs(pnl)} />

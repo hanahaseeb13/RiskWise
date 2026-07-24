@@ -6,15 +6,15 @@ import PageTransition from './PageTransition';
 
 export default function AppLayout() {
   return (
-    <div className="min-h-screen bg-bg px-4 pb-10 pt-4 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-7xl gap-6">
-        <Sidebar />
-        <div className="min-w-0 flex-1">
-          <Navbar />
+    <div className="flex min-h-screen bg-[#141414]">
+      <Sidebar />
+      <div className="flex min-w-0 flex-1 flex-col">
+        <Navbar />
+        <main className="flex-1 px-5 py-6 sm:px-8 sm:py-8">
           <PageTransition>
             <Outlet />
           </PageTransition>
-        </div>
+        </main>
       </div>
       <InterventionModal />
     </div>

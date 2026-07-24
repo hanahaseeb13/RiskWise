@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  LayoutGrid, LineChart, Wallet, Brain, Sparkles, Map, Trophy, Settings, X,
+  LayoutGrid, LineChart, Wallet, Brain, Sparkles, Map, Trophy, Settings, X, ShieldHalf,
 } from 'lucide-react';
 import useUIStore from '../store/useUIStore';
 import clsx from 'clsx';
@@ -17,9 +17,20 @@ const links = [
   { to: '/settings', label: 'Settings', icon: Settings },
 ];
 
+function Brand() {
+  return (
+    <div className="flex items-center gap-2 px-2">
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-darktext">
+        <ShieldHalf size={16} strokeWidth={2.5} />
+      </div>
+      <span className="font-display text-base font-semibold tracking-tight">RiskWise</span>
+    </div>
+  );
+}
+
 function NavItems({ onClick }) {
   return (
-    <nav className="flex flex-col gap-1">
+    <nav className="flex flex-col gap-0.5">
       {links.map(({ to, label, icon: Icon }) => (
         <NavLink
           key={to}
@@ -28,14 +39,14 @@ function NavItems({ onClick }) {
           onClick={onClick}
           className={({ isActive }) =>
             clsx(
-              'flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-colors',
+              'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
               isActive
-                ? 'bg-accent text-darktext'
-                : 'text-light/80 hover:bg-white/10'
+                ? 'bg-white/[0.08] text-accent'
+                : 'text-light/60 hover:bg-white/[0.05] hover:text-light/90'
             )
           }
         >
-          <Icon size={18} />
+          <Icon size={17} strokeWidth={2} />
           {label}
         </NavLink>
       ))}
@@ -47,8 +58,11 @@ export default function Sidebar() {
   const { sidebarOpen, closeSidebar } = useUIStore();
   return (
     <>
-      <aside className="sticky top-24 hidden h-fit w-64 shrink-0 rounded-card-lg bg-dark border border-white/10 p-4 lg:block">
-        <NavItems />
+      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-white/[0.08] bg-[#161616] px-3 py-6 lg:flex">
+        <Brand />
+        <div className="mt-8">
+          <NavItems />
+        </div>
       </aside>
 
       <AnimatePresence>
@@ -65,12 +79,17 @@ export default function Sidebar() {
               animate={{ x: 0 }}
               exit={{ x: -280 }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="relative z-10 h-full w-72 bg-dark p-4"
+              className="relative z-10 flex h-full w-72 flex-col border-r border-white/[0.08] bg-[#161616] px-3 py-6"
             >
-              <button onClick={closeSidebar} className="mb-4 ml-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
-                <X size={16} />
-              </button>
-              <NavItems onClick={closeSidebar} />
+              <div className="flex items-center justify-between px-2">
+                <Brand />
+                <button onClick={closeSidebar} className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] text-light/70">
+                  <X size={15} />
+                </button>
+              </div>
+              <div className="mt-8">
+                <NavItems onClick={closeSidebar} />
+              </div>
             </motion.aside>
           </motion.div>
         )}

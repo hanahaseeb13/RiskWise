@@ -24,7 +24,7 @@ export default function TradeTicket() {
   };
 
   return (
-    <Card hover={false} className="flex flex-col gap-4">
+    <Card className="flex flex-col gap-4">
       <div>
         <p className="text-xs uppercase tracking-wide text-muted">Trading</p>
         <h3 className="font-display text-xl font-semibold">{stock.symbol}</h3>

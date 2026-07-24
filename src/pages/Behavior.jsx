@@ -9,7 +9,7 @@ export default function Behavior() {
   return (
     <div className="flex flex-col gap-6">
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-        <Card hover={false} className="flex flex-col items-center justify-center gap-3 lg:col-span-1">
+        <Card className="flex flex-col items-center justify-center gap-3 lg:col-span-1">
           <div className="flex flex-wrap justify-center gap-2">
             {behaviorTags.map((t) => (
               <span

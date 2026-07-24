@@ -40,7 +40,7 @@ export default function Settings() {
 
   return (
     <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
-      <Card hover={false} className="h-fit lg:col-span-1">
+      <Card className="h-fit lg:col-span-1">
         <nav className="flex flex-col gap-1">
           {tabs.map(({ id, label, icon: Icon }) => (
             <button

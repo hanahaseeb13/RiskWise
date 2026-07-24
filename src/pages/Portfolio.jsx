@@ -16,21 +16,21 @@ export default function Portfolio() {
   return (
     <div className="flex flex-col gap-6">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-4">
-        <Card hover={false}>
+        <Card>
           <p className="text-xs uppercase tracking-wide text-muted">Total Value</p>
           <p className="mt-2 font-display text-2xl font-bold">₹<AnimatedCounter value={current + cash} /></p>
         </Card>
-        <Card hover={false}>
+        <Card>
           <p className="text-xs uppercase tracking-wide text-muted">Invested</p>
           <p className="mt-2 font-display text-2xl font-bold">₹<AnimatedCounter value={invested} /></p>
         </Card>
-        <Card hover={false}>
+        <Card>
           <p className="text-xs uppercase tracking-wide text-muted">P&amp;L</p>
           <p className={clsx('mt-2 font-display text-2xl font-bold', pnl >= 0 ? 'text-teal' : 'text-danger')}>
             {pnl >= 0 ? '+' : ''}₹{pnl.toFixed(0)}
           </p>
         </Card>
-        <Card hover={false}>
+        <Card>
           <p className="text-xs uppercase tracking-wide text-muted">Return</p>
           <p className={clsx('mt-2 font-display text-2xl font-bold', pnl >= 0 ? 'text-teal' : 'text-danger')}>
             {pnl >= 0 ? '+' : ''}{pnlPct}%

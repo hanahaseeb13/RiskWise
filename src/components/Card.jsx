@@ -6,7 +6,7 @@ export default function Card({
   children,
   className,
   variant = 'dark',
-  hover = true,
+  elevated = false,
   as = 'div',
   ...props
 }) {
@@ -14,20 +14,23 @@ export default function Card({
     () => (typeof as === 'string' ? motion[as] || motion.div : motion(as)),
     [as]
   );
+
   const variants = {
-    dark: 'bg-dark border border-white/10',
+    dark: 'bg-[#1E1E1E] border border-white/[0.08]',
     light: 'bg-light text-darktext border border-black/5',
     glass: 'glass',
+    flat: 'bg-transparent border border-white/[0.06]',
   };
+
   return (
     <Comp
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      whileHover={hover ? { y: -4 } : undefined}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
       className={clsx(
-        'rounded-card-lg p-6 shadow-soft',
+        'rounded-2xl p-6 transition-colors duration-200',
+        elevated && 'shadow-soft',
         variants[variant],
         className
       )}

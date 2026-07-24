@@ -9,7 +9,7 @@ export default function Achievements() {
 
   return (
     <div className="flex flex-col gap-6">
-      <Card hover={false} className="flex flex-col items-center gap-3 text-center">
+      <Card className="flex flex-col items-center gap-3 text-center">
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/20 text-accent">
           <Trophy size={28} />
         </div>
@@ -28,7 +28,7 @@ export default function Achievements() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.06 }}
               whileHover={{ y: -4 }}
-              className={`flex flex-col items-center gap-2 rounded-card p-6 text-center border ${
+              className={`flex flex-col items-center gap-2 rounded-xl p-6 text-center border ${
                 a.earned
                   ? 'bg-accent/10 border-accent/30'
                   : 'bg-white/5 border-white/10 grayscale opacity-50'

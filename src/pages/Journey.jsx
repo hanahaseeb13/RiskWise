@@ -12,7 +12,7 @@ export default function Journey() {
   const score = 74;
   return (
     <div className="flex flex-col gap-6">
-      <Card hover={false}>
+      <Card>
         <p className="text-xs uppercase tracking-wide text-muted">Behavioral Health Score</p>
         <div className="mt-3 flex items-center gap-4">
           <span className="font-display text-4xl font-bold text-teal">{score}</span>
